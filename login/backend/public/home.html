@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks List</title>
+</head>
+
+<body>
+  <h1>Tasks List</h1>
+  <ul id="tasks-list"></ul>
+
+  <script>
+    // JavaScript code to fetch data and display it
+    fetch('http://localhost:5000/tasks')
+      .then(response => response.json())
+      .then(data => {
+        const tasksList = document.getElementById('tasks-list');
+        data.forEach(task => {
+          const li = document.createElement('li');
+          li.textContent = `${task.task_name}: ${task.bable}`;
+          tasksList.appendChild(li);
+        });
+      })
+      .catch(error => console.error('Error fetching tasks:', error));
+  </script>
+</body>
+
+</html>
